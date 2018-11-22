@@ -1,5 +1,6 @@
 import LEDMatrix
 import Keypad
+import os
 
 ROWS = 4
 COLS = 4
@@ -11,7 +12,7 @@ rowsPins = [7,32,22,36]
 colsPins = [19,18,16,12]	    
 
 def main():
-##    print(LEDMatrix.Numpad(LEDMatrix.inCmd))
+    print(os.path.isfile(~/Code/Git/RasPi))
 ##    if LEDMatrix.Numpad(LEDMatrix.inCmd) == True:
         input = str()
         input2 = str()

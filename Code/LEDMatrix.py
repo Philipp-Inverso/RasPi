@@ -1,6 +1,7 @@
 import RPi.GPIO as GPIO
 #from tkinter import *
 import Keypad
+import os
 import wurf
 import time_pr
 import snake
@@ -49,15 +50,19 @@ def shiftOut(dPin,cPin,order,val):
         
 def Numpad(jn):
     if jn == 'j':
-        return True
+        datei = open("Numpad", "w")
     elif jn == 'n':
-        return False
+        try:
+			os.remove("Numpad")
+		except:
+			pass
 
 def loop():
     global inCmd
     print()
     inCmd = input('Numpad j/n : ')
-    if Numpad(inCmd) == True:
+	Numpad(inCmd)
+    if os.path.isfile(~/Code/Git/RasPi) == True:
         print("# = Diese Liste")
         print("* = beenden")
         print("A = Taschenrechner")
@@ -132,7 +137,7 @@ def loop():
             except:
                 print('Ein Fehler ist aufgetreten!')
                 pass
-    elif Numpad(inCmd) == False:
+    elif os.path.isfile(~/Code/Git/RasPi) == False:
         print("'quit' = beenden")
         print("'wurf' = wuerfeln (16-seitig)")
         print("'time' = Zeit anzeigen")
