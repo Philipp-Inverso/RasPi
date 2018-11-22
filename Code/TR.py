@@ -12,8 +12,7 @@ rowsPins = [7,32,22,36]
 colsPins = [19,18,16,12]	    
 
 def main():
-        print(os.path.isfile("/home/pi/Code/Git/RasPi/Code/Numpad"))
-##    if LEDMatrix.Numpad(LEDMatrix.inCmd) == True:
+    if os.path.isfile("/home/pi/Code/Git/RasPi/Code/Numpad"):
         input = str()
         input2 = str()
         merke = str()
@@ -80,4 +79,9 @@ def main():
                 else:
                     input2 = input2 + key
                     print(input2)
-##    elif LEDMatrix.Numpad(LEDMatrix.inCmd) == False:
+    else:
+	print()
+	zahl1 = input('1.Zahl: ')
+	operator = input('Operation: ')
+	zahl2 = input('2.Zahl: ')
+	print(int(zahl1) + int(operator) + int(zahl2))

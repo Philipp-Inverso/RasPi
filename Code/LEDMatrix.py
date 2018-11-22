@@ -1,9 +1,7 @@
 import RPi.GPIO as GPIO
-#from tkinter import *
 import Keypad
 import os
 import time
-#from pathlib import path
 import wurf
 import time_pr
 import snake
@@ -65,7 +63,6 @@ def loop():
     print()
     inCmd = input('Numpad j/n : ')
     Numpad(inCmd)
-    #Numpad = Path("
     if os.path.exists("/home/pi/Code/Git/RasPi/Code/Numpad"):
         print("# = Diese Liste")
         print("* = beenden")
