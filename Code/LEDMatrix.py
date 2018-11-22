@@ -2,6 +2,8 @@ import RPi.GPIO as GPIO
 #from tkinter import *
 import Keypad
 import os
+import time
+#from pathlib import path
 import wurf
 import time_pr
 import snake
@@ -49,20 +51,22 @@ def shiftOut(dPin,cPin,order,val):
         GPIO.output(cPin,GPIO.HIGH);
         
 def Numpad(jn):
-    if jn == 'j':
-        datei = open("Numpad", "w")
-    elif jn == 'n':
-        try:
-			os.remove("Numpad")
-		except:
-			pass
+    try:
+        if jn == 'j':
+            with open("Numpad", "w") as datei:
+                time.sleep(0.1)
+        elif jn == 'n':
+            os.remove("Numpad")
+    except:
+        pass
 
 def loop():
     global inCmd
     print()
     inCmd = input('Numpad j/n : ')
-	Numpad(inCmd)
-    if os.path.isfile(~/Code/Git/RasPi) == True:
+    Numpad(inCmd)
+    #Numpad = Path("
+    if os.path.exists("/home/pi/Code/Git/RasPi/Code/Numpad"):
         print("# = Diese Liste")
         print("* = beenden")
         print("A = Taschenrechner")
@@ -137,7 +141,7 @@ def loop():
             except:
                 print('Ein Fehler ist aufgetreten!')
                 pass
-    elif os.path.isfile(~/Code/Git/RasPi) == False:
+    elif os.path.isfile("home/pi/Code/Git/RasPi/Code/Numpad") == False:
         print("'quit' = beenden")
         print("'wurf' = wuerfeln (16-seitig)")
         print("'time' = Zeit anzeigen")
@@ -172,8 +176,8 @@ def loop():
                 random_dot.Dot()
             elif inCmd == 'random2':
                 random_dot2.main()
-##            elif inCmd == 'TR':
-##                TR.main()
+            elif inCmd == 'TR':
+                TR.main()
             elif inCmd == 'gui':
                 GUI.main()
             elif inCmd == 'karte':
@@ -183,7 +187,7 @@ def loop():
             else: print('Befehl nicht erkannt')
         except:
             print('Ein Fehler ist aufgetreten!')
-            pass
+            
 
 def destroy():   # When 'Ctrl+C' is pressed, the function is executed. 
     GPIO.cleanup()

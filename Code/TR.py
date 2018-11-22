@@ -12,7 +12,7 @@ rowsPins = [7,32,22,36]
 colsPins = [19,18,16,12]	    
 
 def main():
-    print(os.path.isfile(~/Code/Git/RasPi))
+        print(os.path.isfile("/home/pi/Code/Git/RasPi/Code/Numpad"))
 ##    if LEDMatrix.Numpad(LEDMatrix.inCmd) == True:
         input = str()
         input2 = str()
