@@ -11,79 +11,89 @@ rowsPins = [7,32,22,36]
 colsPins = [19,18,16,12]	      
 
 def main():
-    type = str()
-    input = str()
-    input2 = str()
-    input16 = str()
-    print('Input:')
-    print("'A' = Dez")
-    print("'B' = Bin")
-    print("'C' = Hex")
-    while True:
-        keypad = Keypad.Keypad(keys,rowsPins,colsPins,ROWS,COLS)
-        keypad.setDebounceTime(50)
-        key = keypad.getKey()
-        if key == '*':
-            print("# = Diese Liste")
-            print("* = beenden")
-            print("A = Taschenrechner")
-            print("B = Dez-Bin-Hex-Rechner")
-            print("C = GUI")
-            print("1 = wuerfeln (16-seitig)")
-            print("2 = Zeit anzeigen")
-            print("3 = Display CPU-Temp")
-            print("4 = 'snake'")
-            print("5 = 'snake-game'")
-            print("6 = 'matrix'")
-            print("7 = matrix2'")
-            print("8 = random Punkt")
-            print("9 = 'Bislschirmschoner'")
-            print("0 = Karte ziehen")
-            break
-        elif key == '#':
-            type = ''
-            input = ''
-            input2 = ''
-            input16 = ''
-        elif key == 'A':
-            type = 'Dez'
-        elif key == 'B':
-            type = 'Bin'
-        elif key == 'C':
-            type = 'Hex'
-            print('Bitte Dez angeben (z.B.: 01 = 1; F = 15)')
-        elif key != keypad.NULL:
-            if type == 'Dez':
-                input = input + key
-                print()
-                print(input)
-                print(bin(int(input)))
-                print(hex(int(input)))
-            elif type == 'Bin':
-                if key == '0' or key == '1':
-                    input2 = input2 + key
-                    input = input + bin(int(input2)).split('0b')[1]
-                    input2 = ''
-                    try:
-                        input = '0b' + input.split('0b')[1]
-                    except:
-                        input = '0b' + input
+    if os.path.isfile("/home/pi/Code/Git/RasPi/Code/Numpad"):
+        type = str()
+        eink = str()
+        eink2 = str()
+        eink16 = str()
+        print('eink:')
+        print("'A' = Dez")
+        print("'B' = Bin")
+        print("'C' = Hex")
+        while True:
+            keypad = Keypad.Keypad(keys,rowsPins,colsPins,ROWS,COLS)
+            keypad.setDebounceTime(50)
+            key = keypad.getKey()
+            if key == '*':
+                print("# = Diese Liste")
+                print("* = beenden")
+                print("A = Taschenrechner")
+                print("B = Dez-Bin-Hex-Rechner")
+                print("C = GUI")
+                print("1 = wuerfeln (16-seitig)")
+                print("2 = Zeit anzeigen")
+                print("3 = Display CPU-Temp")
+                print("4 = 'snake'")
+                print("5 = 'snake-game'")
+                print("6 = 'matrix'")
+                print("7 = matrix2'")
+                print("8 = random Punkt")
+                print("9 = 'Bislschirmschoner'")
+                print("0 = Karte ziehen")
+                break
+            elif key == '#':
+                type = ''
+                eink = ''
+                eink2 = ''
+                eink16 = ''
+            elif key == 'A':
+                type = 'Dez'
+            elif key == 'B':
+                type = 'Bin'
+            elif key == 'C':
+                type = 'Hex'
+                print('Bitte Dez angeben (z.B.: 01 = 1; F = 15)')
+            elif key != keypad.NULL:
+                if type == 'Dez':
+                    eink = eink + key
                     print()
-                    print(input)
-                    print(eval(input))
-                    print(hex(eval(input)))
-                else:
-                    print('no binary number')
-            elif type == 'Hex':
-                input16 = input16 + key
-                if len(input16) == 2:
-                    input = input + hex(int(input16)).split('0x')[1]
-                    input16 = ''
-                    try:
-                        input = '0x' + input.split('0x')[1]
-                    except:
-                        input = '0x' + input
-                    print()
-                    print(input)
-                    print(eval(input))
-                    print(bin(eval(input)))
+                    print(eink)
+                    print(bin(int(eink)))
+                    print(hex(int(eink)))
+                elif type == 'Bin':
+                    if key == '0' or key == '1':
+                        eink2 = eink2 + key
+                        eink = eink + bin(int(eink2)).split('0b')[1]
+                        eink2 = ''
+                        try:
+                            eink = '0b' + eink.split('0b')[1]
+                        except:
+                            eink = '0b' + eink
+                        print()
+                        print(eink)
+                        print(eval(eink))
+                        print(hex(eval(eink)))
+                    else:
+                        print('no binary number')
+                elif type == 'Hex':
+                    eink16 = eink16 + key
+                    if len(eink16) == 2:
+                        eink = eink + hex(int(eink16)).split('0x')[1]
+                        eink16 = ''
+                        try:
+                            eink = '0x' + eink.split('0x')[1]
+                        except:
+                            eink = '0x' + eink
+                        print()
+                        print(eink)
+                        print(eval(eink))
+                        print(bin(eval(eink)))
+    else:
+        modus = input('Welcher Eingabetyp? (Dez, Bin, Hex) ')
+        eingabe = input('Zahl: ')
+        if modus == 'dez' or 'Dez':
+            print(bin(int(eingabe)))
+            print(hex(int(eingabe)))
+##        elif modus == 'bin' or 'Bin':
+##        elif modus == 'hex' or 'Hex':
+##        else: print('unzulaeassige Eingabe')

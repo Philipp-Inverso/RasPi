@@ -13,8 +13,8 @@ colsPins = [19,18,16,12]
 
 def main():
     if os.path.isfile("/home/pi/Code/Git/RasPi/Code/Numpad"):
-        input = str()
-        input2 = str()
+        eingabe = str()
+        eingabe2 = str()
         merke = str()
         print("'A' = '+'")
         print("'B' = '-'")
@@ -53,35 +53,48 @@ def main():
                 merke = 'D'
             elif key == '#':
                 if merke == 'A':
-                    print(str(input) + ' + ' + str(input2) +' = '+ str(int(input) + int(input2)))
-                    input = ''
-                    input2 = ''
+                    print(str(eingabe) + ' + ' + str(eingabe2) +' = '+ str(int(eingabe) + int(eingabe2)))
+                    eingabe = ''
+                    eingabe2 = ''
                     merke = ''
                 if merke == 'B':
-                    print(str(input) + ' - ' + str(input2) +' = '+ str(int(input) - int(input2)))
-                    input = ''
-                    input2 = ''
+                    print(str(eingabe) + ' - ' + str(eingabe2) +' = '+ str(int(eingabe) - int(eingabe2)))
+                    eingabe = ''
+                    eingabe2 = ''
                     merke = ''
                 if merke == 'C':
-                    print(str(input) + ' * ' + str(input2) +' = '+ str(int(input) * int(input2)))
-                    input = ''
-                    input2 = ''
+                    print(str(eingabe) + ' * ' + str(eingabe2) +' = '+ str(int(eingabe) * int(eingabe2)))
+                    eingabe = ''
+                    eingabe2 = ''
                     merke = ''
                 if merke == 'D':
-                    print(str(input) + ' / ' + str(input2) +' = '+ str(int(input) / int(input2)))
-                    input = ''
-                    input2 = ''
+                    print(str(eingabe) + ' / ' + str(eingabe2) +' = '+ str(int(eingabe) / int(eingabe2)))
+                    eingabe = ''
+                    eingabe2 = ''
                     merke = ''
             elif key != keypad.NULL:
                 if not merke:
-                    input = input + key
-                    print(input)
+                    eingabe = eingabe + key
+                    print(eingabe)
                 else:
-                    input2 = input2 + key
-                    print(input2)
+                    eingabe2 = eingabe2 + key
+                    print(eingabe2)
     else:
-	print()
-	zahl1 = input('1.Zahl: ')
-	operator = input('Operation: ')
-	zahl2 = input('2.Zahl: ')
-	print(int(zahl1) + int(operator) + int(zahl2))
+        while True:
+            print()
+            zahl1 = int(input('1.Zahl: '))
+            operator = input('Operation: ')
+            zahl2 = int(input('2.Zahl: '))
+            if operator == '+':
+                print(zahl1 + zahl2)
+            elif operator == '-':
+                print(zahl1 - zahl2)
+            elif operator == '*':
+                print(zahl1 * zahl2)
+            elif operator == '/':
+                print(zahl1 / zahl2)
+            stop = input('Weiter? ')
+            if stop == 'nein'or'Nein'or'n':
+                break
+            elif stop == 'ja'or'Ja'or'j':
+                pass

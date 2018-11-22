@@ -153,35 +153,39 @@ def loop():
         print("'bin_hex' = Dez-Bin-Hex-Rechner ----WIP----")
         print("'karte' = Karte ziehen")
         try:
-            inCmd=input()
-            if inCmd == "wurf":
-                wurf.zufall()
-            elif (inCmd == "time"):
-                print(time_pr.time_wert())
-                time_pr.Time()
-            elif (inCmd == "snake"):
-                snake.snakeL()
-            elif (inCmd == "matrix"):
-                matrix.matrix()
-            elif (inCmd == 'temp'):
-                temp.cpu_temp
-            elif (inCmd == 'matrix2'):
-                matrix2.matrixx
-    ##        elif inCmd == 'snake-game':
-    ##            snake_game.main()
-            elif inCmd == 'random':
-                random_dot.Dot()
-            elif inCmd == 'random2':
-                random_dot2.main()
-            elif inCmd == 'TR':
-                TR.main()
-            elif inCmd == 'gui':
-                GUI.main()
-            elif inCmd == 'karte':
-                Karte.main
-            elif inCmd == 'quit':
-                destroy()
-            else: print('Befehl nicht erkannt')
+            while True:
+                inCmd=input()
+                if inCmd == "wurf":
+                    wurf.zufall()
+                elif (inCmd == "time"):
+                    print(time_pr.time_wert())
+                    time_pr.Time()
+                elif (inCmd == "snake"):
+                    snake.snakeL()
+                elif (inCmd == "matrix"):
+                    matrix.matrix()
+                elif (inCmd == 'temp'):
+                    temp.cpu_temp
+                elif (inCmd == 'matrix2'):
+                    matrix2.matrixx
+        ##        elif inCmd == 'snake-game':
+        ##            snake_game.main()
+                elif inCmd == 'random':
+                    random_dot.Dot()
+                elif inCmd == 'random2':
+                    random_dot2.main()
+                elif inCmd == 'TR':
+                    TR.main()
+                elif inCmd == 'gui':
+                    GUI.main()
+                elif inCmd == 'karte':
+                    Karte.main
+                elif inCmd == 'rechner':
+                    bin_hex.main()
+                elif inCmd == 'quit'or'beenden':
+                    destroy()
+                    break
+                else: print('Befehl nicht erkannt')
         except:
             print('Ein Fehler ist aufgetreten!')
             
