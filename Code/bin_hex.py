@@ -1,5 +1,6 @@
 import RPi.GPIO as GPIO
 import Keypad
+import os
 
 ROWS = 4
 COLS = 4
@@ -89,11 +90,28 @@ def main():
                         print(eval(eink))
                         print(bin(eval(eink)))
     else:
-        modus = input('Welcher Eingabetyp? (Dez, Bin, Hex) ')
-        eingabe = input('Zahl: ')
-        if modus == 'dez' or 'Dez':
-            print(bin(int(eingabe)))
-            print(hex(int(eingabe)))
-##        elif modus == 'bin' or 'Bin':
-##        elif modus == 'hex' or 'Hex':
-##        else: print('unzulaeassige Eingabe')
+        while True:
+            modus = input('Welcher Eingabetyp? (dez, bin, hex) ')
+            eingabe = input('Zahl: ')
+            if modus == 'dez':
+                print(bin(int(eingabe)))
+                print(hex(int(eingabe)))
+            elif modus == 'bin':
+                try:
+                    eingabe = '0b' + eingabe.split('0b')[1]
+                except:
+                    eingabe = '0b' + eingabe
+                print(eval(eingabe))
+                print(hex(eval(eingabe)))
+            elif modus == 'hex':
+                try:
+                    eingabe = '0x' + eingabe.split('0x')[1]
+                except:
+                    eingabe = '0x' + eingabe
+                print(eval(eingabe))
+                print(bin(eval(eingabe)))
+            else: print('unzulaeassige Eingabe')
+            if input('Ende? ') == 'ja':
+                break
+            else:
+                pass
